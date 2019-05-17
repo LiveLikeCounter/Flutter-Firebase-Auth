@@ -4,12 +4,12 @@ import '../models/auth.dart';
 
 final auth = new AuthService();
 
-class HomeScreen extends StatefulWidget {
+class Home extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _HomeState createState() => _HomeState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeState extends State<Home> {
 
   _userPhoto(photoUrl) {
     if (photoUrl != 'null') {

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import './models/auth.dart';
 
-import './Screens/homeScreen.dart';
-import './Screens/loginScreen.dart';
+import './Screens/home.dart';
+import './Screens/login.dart';
 
 final auth = new AuthService();
 bool _isAuthenticated = false;
@@ -35,25 +35,25 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: <String, WidgetBuilder>{
-        '/login': (BuildContext context) => LoginScreen(),
-        '/home': (BuildContext context) => HomeScreen(),
+        '/login': (BuildContext context) => Login(),
+        '/home': (BuildContext context) => Home(),
       },
       initialRoute: '/',
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
           case '/':
             return MaterialPageRoute(builder: (_) {
-              return _isAuthenticated ? HomeScreen() : LoginScreen();
+              return _isAuthenticated ? Home() : Login();
             });
           case '/login':
-            return MaterialPageRoute(builder: (_) => LoginScreen());
+            return MaterialPageRoute(builder: (_) => Login());
           case '/home':
-            return MaterialPageRoute(builder: (_) => HomeScreen());
+            return MaterialPageRoute(builder: (_) => Home());
         }
       },
       onUnknownRoute: (RouteSettings settings) {
         return MaterialPageRoute(
-            builder: (BuildContext context) => HomeScreen());
+            builder: (BuildContext context) => Home());
       },
     );
   }

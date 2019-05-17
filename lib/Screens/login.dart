@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
-import '../Screens/PhoneAuthDialog.dart';
-import '../Screens/EmailSignInDialog.dart';
+import '../Screens/PhoneAuth.dart';
+import '../Screens/EmailSignIn.dart';
 
 import '../models/auth.dart';
 
 final auth = new AuthService();
 
-class LoginScreen extends StatefulWidget {
+class Login extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _LoginState createState() => _LoginState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginState extends State<Login> {
   BuildContext scaffoldContext;
 
   _showInSnackBar(String value) {
@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
     Navigator.of(context).push(
       MaterialPageRoute<Null>(
           builder: (BuildContext context) {
-            return EmailSignInDialog();
+            return EmailSignIn();
           },
           fullscreenDialog: true),
     );

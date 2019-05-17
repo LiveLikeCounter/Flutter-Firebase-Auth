@@ -3,12 +3,12 @@ import '../models/auth.dart';
 
 final auth = new AuthService();
 
-class PhoneSignInDialog extends StatefulWidget {
+class PhoneSignIn extends StatefulWidget {
   @override
-  PhoneSignInDialogState createState() => PhoneSignInDialogState();
+  PhoneSignInState createState() => PhoneSignInState();
 }
 
-class PhoneSignInDialogState extends State<PhoneSignInDialog> {
+class PhoneSignInState extends State<PhoneSignIn> {
   BuildContext scaffoldContext;
   final TextEditingController _phoneNumberController = TextEditingController();
   final TextEditingController _smsController = TextEditingController();

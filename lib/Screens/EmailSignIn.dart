@@ -6,12 +6,12 @@ import '../models/auth.dart';
 final auth = new AuthService();
 
 
-class EmailSignInDialog extends StatefulWidget {
+class EmailSignIn extends StatefulWidget {
   @override
-  EmailSignInDialogState createState() => EmailSignInDialogState();
+  EmailSignInState createState() => EmailSignInState();
 }
 
-class EmailSignInDialogState extends State<EmailSignInDialog> {
+class EmailSignInState extends State<EmailSignIn> {
   BuildContext scaffoldContext;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String email;
