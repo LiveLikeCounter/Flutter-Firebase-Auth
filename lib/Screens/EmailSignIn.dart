@@ -5,7 +5,6 @@ import '../models/auth.dart';
 
 final auth = new AuthService();
 
-
 class EmailSignIn extends StatefulWidget {
   @override
   EmailSignInState createState() => EmailSignInState();
@@ -57,66 +56,69 @@ class EmailSignInState extends State<EmailSignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Builder(builder: (BuildContext context) {
-        scaffoldContext = context;
-        return Center(
-          child: Container(
-            margin: EdgeInsets.all(25),
-            child: Form(
-              key: this._formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  TextFormField(
-                    decoration: InputDecoration(hintText: 'Enter an email'),
-                    keyboardType: TextInputType.emailAddress,
-                    autofocus: true,
-                    validator: (String value) {
-                      _validateEmail(value);
-                    },
-                    onSaved: (String value) {
-                      this.email = value;
-                    },
-                  ),
-                  Padding(padding: EdgeInsets.all(10)),
-                  TextFormField(
-                    decoration: InputDecoration(hintText: 'Enter your password'),
-                    obscureText: true,
-                    validator: (String value) {
-                      _validatePassword(value);
-                    },
-                    onSaved: (String value) {
-                      this.password = value;
-                    },
-                  ),
-                  Padding(padding: EdgeInsets.all(10)),
-                  ButtonTheme(
-                    minWidth: MediaQuery.of(context).size.width,
-                    child: RaisedButton(
-                      onPressed: () => emailSignIn(),
-                      child: Text('Continue'),
-                      textColor: Colors.white,
-                      elevation: 7.0,
-                      color: Colors.blueGrey[700],
-                    ),
-                  ),
-                  ButtonTheme(
-                    minWidth: MediaQuery.of(context).size.width,
-                    child: OutlineButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
+      body: Center(
+        child: Builder(builder: (BuildContext context) {
+          scaffoldContext = context;
+          return SingleChildScrollView(
+            child: Container(
+              margin: EdgeInsets.all(25),
+              child: Form(
+                key: this._formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    TextFormField(
+                      decoration: InputDecoration(hintText: 'Enter an email'),
+                      keyboardType: TextInputType.emailAddress,
+                      autofocus: true,
+                      validator: (String value) {
+                        _validateEmail(value);
                       },
-                      child: Text('Cancel'),
-                      textColor: Colors.blueGrey[700],
-                      color: Colors.blueGrey[700],
+                      onSaved: (String value) {
+                        this.email = value;
+                      },
                     ),
-                  ),
-                ],
+                    Padding(padding: EdgeInsets.all(10)),
+                    TextFormField(
+                      decoration:
+                          InputDecoration(hintText: 'Enter your password'),
+                      obscureText: true,
+                      validator: (String value) {
+                        _validatePassword(value);
+                      },
+                      onSaved: (String value) {
+                        this.password = value;
+                      },
+                    ),
+                    Padding(padding: EdgeInsets.all(10)),
+                    ButtonTheme(
+                      minWidth: MediaQuery.of(context).size.width,
+                      child: RaisedButton(
+                        onPressed: () => emailSignIn(),
+                        child: Text('Continue'),
+                        textColor: Colors.white,
+                        elevation: 7.0,
+                        color: Colors.blueGrey[700],
+                      ),
+                    ),
+                    ButtonTheme(
+                      minWidth: MediaQuery.of(context).size.width,
+                      child: OutlineButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Text('Cancel'),
+                        textColor: Colors.blueGrey[700],
+                        color: Colors.blueGrey[700],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        );
-      }),
+          );
+        }),
+      ),
     );
   }
 }

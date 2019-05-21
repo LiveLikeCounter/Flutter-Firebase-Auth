@@ -45,10 +45,10 @@ class PhoneSignInState extends State<PhoneSignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Builder(builder: (BuildContext context) {
-        scaffoldContext = context;
-        return SingleChildScrollView(
-          child: Center(
+      body: Center(
+        child: Builder(builder: (BuildContext context) {
+          scaffoldContext = context;
+          return SingleChildScrollView(
             child: Container(
               margin: EdgeInsets.all(25),
               child: Column(
@@ -58,7 +58,8 @@ class PhoneSignInState extends State<PhoneSignIn> {
                     padding: EdgeInsets.symmetric(vertical: 8),
                     child: TextFormField(
                       controller: _phoneNumberController,
-                      decoration: InputDecoration(labelText: 'Phone number (+x xxx-xxx-xxxx)'),
+                      decoration: InputDecoration(
+                          labelText: 'Phone number (+x xxx-xxx-xxxx)'),
                       validator: (String value) {
                         if (value.isEmpty) {
                           return 'Phone number (+x xxx-xxx-xxxx)';
@@ -110,9 +111,9 @@ class PhoneSignInState extends State<PhoneSignIn> {
                 ],
               ),
             ),
-          ),
-        );
-      }),
+          );
+        }),
+      ),
     );
   }
 }

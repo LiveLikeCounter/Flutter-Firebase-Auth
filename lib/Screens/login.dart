@@ -38,7 +38,7 @@ class _LoginState extends State<Login> {
     Navigator.of(context).push(
       MaterialPageRoute<Null>(
           builder: (BuildContext context) {
-            return PhoneSignInDialog();
+            return PhoneSignIn();
           },
           fullscreenDialog: true),
     );
@@ -77,19 +77,18 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Builder(builder: (BuildContext context) {
-        scaffoldContext = context;
-        return SingleChildScrollView(
-          child: Center(
+      backgroundColor: Color.fromRGBO(123, 194, 237, 1),
+      body: Center(
+        child: Builder(builder: (BuildContext context) {
+          scaffoldContext = context;
+          return SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.all(30),
-                  width: MediaQuery.of(context).size.width / 3,
-                  height: 200,
-                  child: Image.asset('assets/images/Interestinate.png'),
+                  // width: MediaQuery.of(context).size.width,
+                  // height: 200,
+                  child: Image.asset('assets/images/FlutterFirebaseAuth.png'),
                 ),
                 SignInButtonBuilder(
                   text: 'Sign in with Email',
@@ -117,9 +116,9 @@ class _LoginState extends State<Login> {
                 ),
               ],
             ),
-          ),
-        );
-      }),
+          );
+        }),
+      ),
     );
   }
 }

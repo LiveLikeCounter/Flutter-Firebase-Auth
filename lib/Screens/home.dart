@@ -10,7 +10,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   _userPhoto(photoUrl) {
     if (photoUrl != 'null') {
       return Container(
@@ -39,12 +38,12 @@ class _HomeState extends State<Home> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              _userPhoto(doc["photoURL"].toString()),
-              Text(doc['displayName'].toString()),
-              Text(doc['email'].toString()),
-              Text(doc['phoneNumber'].toString()),
-              Text(doc['lastSeen'].toString()),
-              Text(doc['uid']),
+              _userPhoto(doc["photoURL"] ?? ''),
+              Text(doc['displayName'] ?? ''),
+              Text(doc['email'] ?? ''),
+              Text(doc['phoneNumber'] ?? ''),
+              Text(doc['lastSeen'] ?? ''),
+              Text(doc['uid'] ?? ''),
               SizedBox(height: 20),
               RaisedButton(
                 child: Text('Logout'),
@@ -63,22 +62,24 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder<Map>(
-        future: auth.getUserData(),
-        builder: (BuildContext context, AsyncSnapshot<Map> snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.none:
-              return Center(child: Text('No userdata found...'));
-            case ConnectionState.active:
-            case ConnectionState.waiting:
-              return Center(child: Text('Loading...'));
-            case ConnectionState.done:
-              var doc = snapshot.data;
-              if (snapshot.hasError) return Text('Error: ${snapshot.error}');
-              return _userCard(doc);
-          }
-          return null;
-        },
+      body: SingleChildScrollView(
+        child: FutureBuilder<Map>(
+          future: auth.getUserData(),
+          builder: (BuildContext context, AsyncSnapshot<Map> snapshot) {
+            switch (snapshot.connectionState) {
+              case ConnectionState.none:
+                return Center(child: Text('No userdata found...'));
+              case ConnectionState.active:
+              case ConnectionState.waiting:
+                return Center(child: Text('Loading...'));
+              case ConnectionState.done:
+                var doc = snapshot.data;
+                if (snapshot.hasError) return Text('Error: ${snapshot.error}');
+                return _userCard(doc);
+            }
+            return null;
+          },
+        ),
       ),
     );
   }

@@ -11,8 +11,8 @@ class AuthService {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FacebookLogin _facebookSignIn = FacebookLogin();
   final twitterLogin = TwitterLogin(
-    consumerKey: '9NCZQIjJLPCDFvMPLjUAos7j0',
-    consumerSecret: 'Fq7ceSAQgMkyQF4W8GPYtQgMPnS253E308IRYwzbfKkuJLr5GO',
+    consumerKey: '0SJ57BdRIPXhJmPZejlg1ro0q',
+    consumerSecret: 'P98O1qWllMc8SpPi7x0MiJQfv2WOIT7cnuiq0Ldj7nRXZLm6Qd',
   );
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
