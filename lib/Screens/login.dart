@@ -86,9 +86,13 @@ class _LoginState extends State<Login> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  // width: MediaQuery.of(context).size.width,
-                  // height: 200,
                   child: Image.asset('assets/images/FlutterFirebaseAuth.png'),
+                ),
+                SignInButtonBuilder(
+                  text: 'Anonymous',
+                  icon: Icons.fingerprint,
+                  onPressed: () => emailSignIn(),
+                  backgroundColor: Colors.orange[400],
                 ),
                 SignInButtonBuilder(
                   text: 'Sign in with Email',
